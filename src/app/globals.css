@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+@source "../shared";
+@source "../templates";
+
+/* ────────────────────────────────────────────────────────────
+ *  Template A — IEIskp (Material Design 3 / Green Nature)
+ *  Scoped under .template-a class
+ * ──────────────────────────────────────────────────────────── */
+
+@theme {
+  /* ── Template A Colors (MD3 Green Palette) ── */
+  --color-ta-primary: #006b20;
+  --color-ta-on-primary: #ffffff;
+  --color-ta-primary-container: #00872b;
+  --color-ta-on-primary-container: #f7fff1;
+  --color-ta-primary-fixed: #84fc89;
+  --color-ta-primary-fixed-dim: #67df70;
+  --color-ta-on-primary-fixed: #002105;
+  --color-ta-on-primary-fixed-variant: #005317;
+
+  --color-ta-secondary: #006e24;
+  --color-ta-on-secondary: #ffffff;
+  --color-ta-secondary-container: #8afb91;
+  --color-ta-on-secondary-container: #007527;
+
+  --color-ta-tertiary: #4f6051;
+  --color-ta-on-tertiary: #ffffff;
+  --color-ta-tertiary-container: #677969;
+  --color-ta-on-tertiary-container: #f6fff4;
+
+  --color-ta-error: #ba1a1a;
+  --color-ta-on-error: #ffffff;
+  --color-ta-error-container: #ffdad6;
+  --color-ta-on-error-container: #93000a;
+
+  --color-ta-background: #f4fcef;
+  --color-ta-on-background: #171d16;
+  --color-ta-surface: #f4fcef;
+  --color-ta-on-surface: #171d16;
+  --color-ta-surface-variant: #dde5d8;
+  --color-ta-on-surface-variant: #3e4a3c;
+  --color-ta-surface-dim: #d5dcd0;
+  --color-ta-surface-bright: #f4fcef;
+  --color-ta-surface-tint: #006e21;
+
+  --color-ta-surface-container-lowest: #ffffff;
+  --color-ta-surface-container-low: #eff6e9;
+  --color-ta-surface-container: #e9f0e3;
+  --color-ta-surface-container-high: #e3eade;
+  --color-ta-surface-container-highest: #dde5d8;
+
+  --color-ta-outline: #6e7b6b;
+  --color-ta-outline-variant: #bdcab8;
+  --color-ta-inverse-surface: #2b322a;
+  --color-ta-inverse-on-surface: #ecf3e6;
+  --color-ta-inverse-primary: #67df70;
+
+  /* ── Template B Colors (Gold / Navy Palette) ── */
+  --color-tb-primary-50: #f7efd2;
+  --color-tb-primary-100: #eedfa6;
+  --color-tb-primary-200: #e5cf79;
+  --color-tb-primary-300: #dcbc5a;
+  --color-tb-primary: #cba73d;
+  --color-tb-primary-400: #cba73d;
+  --color-tb-primary-500: #b8932f;
+  --color-tb-primary-600: #9e7f27;
+  --color-tb-primary-700: #7c631f;
+  --color-tb-primary-800: #5a4716;
+
+  --color-tb-secondary: #110C2D;
+  --color-tb-accent: #cba73d;
+  --color-tb-hover: #C9A227;
+
+  --color-tb-heading: #262626;
+  --color-tb-body: #737477;
+  --color-tb-border: #D9D9D9;
+  --color-tb-line: #eeeeee;
+  --color-tb-light-white: #f6f6f6;
+  --color-tb-footer: #181818;
+
+  --color-tb-background: #ffffff;
+  --color-tb-foreground: #171717;
+
+  --color-tb-success: #3EB75E;
+  --color-tb-danger: #FF0003;
+  --color-tb-warning: #FF8F3C;
+  --color-tb-info: #1BA2DB;
+
+  /* ── Template A Typography ── */
+  --font-ta-heading: "Nunito", sans-serif;
+  --font-ta-body: "DM Sans", sans-serif;
+
+  /* Template A Font Families (per heading level — all DM Sans in IEIskp) */
+  --font-ta-h1: "DM Sans", sans-serif;
+  --font-ta-h2: "DM Sans", sans-serif;
+  --font-ta-h3: "DM Sans", sans-serif;
+  --font-ta-h4: "DM Sans", sans-serif;
+  --font-ta-body-md: "DM Sans", sans-serif;
+  --font-ta-body-lg: "DM Sans", sans-serif;
+  --font-ta-label-md: "DM Sans", sans-serif;
+  --font-ta-label-sm: "DM Sans", sans-serif;
+  --font-ta-caption: "DM Sans", sans-serif;
+  --font-ta-nunito: "Nunito", sans-serif;
+
+  /* Template A Font Sizes */
+  --text-ta-h1: 48px;
+  --text-ta-h2: 36px;
+  --text-ta-h3: 28px;
+  --text-ta-h4: 24px;
+  --text-ta-body-md: 16px;
+  --text-ta-body-lg: 18px;
+  --text-ta-label-md: 14px;
+  --text-ta-label-sm: 12px;
+  --text-ta-caption: 12px;
+
+  /* Template A Spacing */
+  --spacing-ta-unit: 4px;
+  --spacing-ta-xs: 4px;
+  --spacing-ta-sm: 8px;
+  --spacing-ta-md: 16px;
+  --spacing-ta-lg: 24px;
+  --spacing-ta-xl: 32px;
+  --spacing-ta-xxl: 64px;
+  --spacing-ta-gutter: 24px;
+  --spacing-ta-margin: 32px;
+
+  /* Template A Border Radius */
+  --radius-ta-brand: 8px;
+
+  /* ── Template B Typography ── */
+  --font-tb-heading: "Canela Trial", serif;
+  --font-tb-display: "Canela Trial", serif;
+  --font-tb-body: var(--font-inter), sans-serif;
+  --font-tb-hind: var(--font-hind), sans-serif;
+  --font-tb-serif: "Rufina", serif;
+}
+
+/* Template B Global Typography Overrides */
+.template-b h1,
+.template-b h2,
+.template-b h3,
+.template-b h4,
+.template-b h5,
+.template-b h6 {
+  font-family: var(--font-tb-heading);
+}
+
+@font-face {
+  font-family: 'Canela Trial';
+  src: url('/assets/kcs/fonts/Canela-Bold.woff2') format('woff2'),
+       url('/assets/kcs/fonts/Canela-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Canela Trial';
+  src: url('/assets/kcs/fonts/Canela-MediumItalic.woff2') format('woff2'),
+       url('/assets/kcs/fonts/Canela-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Canela Trial';
+  src: url('/assets/kcs/fonts/Canela-RegularItalic.woff2') format('woff2'),
+       url('/assets/kcs/fonts/Canela-RegularItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Canela Trial';
+  src: url('/assets/kcs/fonts/Canela-BoldItalic.woff2') format('woff2'),
+       url('/assets/kcs/fonts/Canela-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Canela Trial';
+  src: url('/assets/kcs/fonts/Canela-Medium.woff2') format('woff2'),
+       url('/assets/kcs/fonts/Canela-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Canela Trial';
+  src: url('/assets/kcs/fonts/Canela-Regular.woff2') format('woff2'),
+       url('/assets/kcs/fonts/Canela-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Global Resets ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}

@@ -1,22 +1,24 @@
 import { headers } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { getSchoolData } from '@/lib/frappe'
+import { getSchoolData, resolvePreviewOptions, type RouteSearchParams } from '@/lib/frappe'
 import { buildMetadata } from '@/lib/metadata'
 import type { Metadata } from 'next'
 import TemplateA from '@/templates/template-a/TemplateA'
 import TemplateB from '@/templates/template-b/TemplateB'
 
-export async function generateMetadata(): Promise<Metadata> {
+type PageProps = { searchParams: Promise<RouteSearchParams> }
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const headersList = await headers()
   const subdomain = headersList.get('x-school-subdomain') ?? ''
-  const data = await getSchoolData(subdomain)
+  const data = await getSchoolData(subdomain, resolvePreviewOptions(await searchParams))
   return buildMetadata({ schoolName: data?.name, title: 'Login' })
 }
 
-export default async function LoginPage() {
+export default async function LoginPage({ searchParams }: PageProps) {
   const headersList = await headers()
   const subdomain = headersList.get('x-school-subdomain') ?? ''
-  const data = await getSchoolData(subdomain)
+  const data = await getSchoolData(subdomain, resolvePreviewOptions(await searchParams))
   if (!data) return notFound()
 
   if (data.config.template_id === 'template-a') return <TemplateA data={data} page="login" />

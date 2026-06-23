@@ -53,6 +53,8 @@ export default async function DemoPage({ params, searchParams }: DemoProps) {
   const template = resolveDemoTemplate((await searchParams).template)
   const data = getDemoData(template)
 
+  // The CARD's template (from the URL) decides the design — never the demo
+  // data's `config.template_id`. Same `data` content, two different templates.
   return template === 'B'
     ? <TemplateB data={data} page={page} />
     : <TemplateA data={data} page={page} />

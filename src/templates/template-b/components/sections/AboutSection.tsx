@@ -1,5 +1,6 @@
 import type { SchoolData } from '@/types/school.types'
 import Image from 'next/image'
+import { Icon } from '@iconify/react'
 import ScrollReveal from '@/shared/animations/scroll-reveal'
 import StaggerChildren from '@/shared/animations/stagger-children'
 
@@ -23,6 +24,7 @@ export default function AboutSection({ data }: { data: SchoolData }) {
                   fill
                   className="object-cover "
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  data-edit-img="about.image"
                 />
               </div>
 
@@ -57,17 +59,34 @@ export default function AboutSection({ data }: { data: SchoolData }) {
 
             {/* Content column */}
             <ScrollReveal direction="right" className="lg:pl-8 flex flex-col justify-center">
-              <h2 className="text-4xl md:text-[2.75rem] font-serif text-gray-900 leading-[1.1] mb-8 uppercase tracking-wide">
+              <h2 data-edit="about.title" className="text-4xl md:text-[2.75rem] font-serif text-gray-900 leading-[1.1] mb-8 uppercase tracking-wide">
                 {about.title}
               </h2>
-              <p className="text-gray-600 leading-relaxed mb-10 text-[15px]">
+              <p data-edit="about.description" className="text-gray-600 leading-relaxed mb-10 text-[15px]">
                 {about.description}
               </p>
+
+              {/* Trust badges */}
+              {about.badges && about.badges.length > 0 && (
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {about.badges.map((badge, bi) => (
+                    <span
+                      key={badge.label}
+                      className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-tb-heading shadow-sm"
+                    >
+                      <Icon icon={badge.icon ?? 'lucide:badge-check'} className="w-4 h-4 text-tb-primary-400 shrink-0" data-edit-icon={`about.badges.${bi}.icon`} />
+                      <span className="font-medium" data-edit={`about.badges.${bi}.label`}>{badge.label}</span>
+                      {badge.sublabel && <span className="text-gray-400" data-edit={`about.badges.${bi}.sublabel`}>· {badge.sublabel}</span>}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               {/* Vintage EST text decoration */}
               {about.subtitle && (
                 <div
-                  className="mt-4 text-7xl md:text-4.5rem] font-bold tracking-wide select-none pointer-events-none uppercase"
+                  data-edit="about.subtitle"
+                  className="mt-4 text-7xl md:text-4.5rem] font-bold tracking-wide select-none uppercase"
                   style={{
                     color: 'transparent',
                     WebkitTextStroke: '1px #d1d5db',
@@ -88,10 +107,10 @@ export default function AboutSection({ data }: { data: SchoolData }) {
             <StaggerChildren className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8">
               {stats.map((stat, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center px-4">
-                  <span className="text-5xl md:text-[3.5rem] font-serif text-gray-900 tracking-tight mb-4 leading-none">
+                  <span data-edit={`stats.${idx}.value`} className="text-5xl md:text-[3.5rem] font-serif text-gray-900 tracking-tight mb-4 leading-none">
                     {stat.value}
                   </span>
-                  <span className="text-[10px] md:text-xs text-gray-400 font-semibold uppercase tracking-[0.2em] leading-relaxed max-w-[140px]">
+                  <span data-edit={`stats.${idx}.label`} className="text-[10px] md:text-xs text-gray-400 font-semibold uppercase tracking-[0.2em] leading-relaxed max-w-[140px]">
                     {stat.label}
                   </span>
                 </div>

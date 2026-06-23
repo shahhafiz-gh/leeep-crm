@@ -2,7 +2,10 @@ import { Icon } from '@iconify/react'
 import type { SchoolData } from '@/types/school.types'
 
 export default function WhyChooseUs({ data }: { data: SchoolData }) {
-  const reasons = data.about.whyChooseUs ?? data.admissions.whyChoose ?? []
+  // Prefer about.whyChooseUs; fall back to admissions.whyChoose (guarded — the
+  // admissions slice may be absent in real blobs).
+  const usingWhyChoose = !!(data.about.whyChooseUs && data.about.whyChooseUs.length)
+  const reasons = data.about.whyChooseUs ?? data.admissions?.whyChoose ?? []
   if (reasons.length === 0) return null
 
   return (
@@ -13,7 +16,7 @@ export default function WhyChooseUs({ data }: { data: SchoolData }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {reasons.map((item) => (
+          {reasons.map((item, i) => (
             <div
               key={item.title}
               className="text-center p-6 rounded-xl border border-tb-border hover:border-tb-primary-400/30 hover:shadow-xl transition-all duration-300 h-full group"
@@ -22,10 +25,11 @@ export default function WhyChooseUs({ data }: { data: SchoolData }) {
                 <Icon
                   icon={item.icon ?? 'lucide:star'}
                   className="w-8 h-8 text-tb-primary-400 group-hover:text-white transition-colors duration-300"
+                  data-edit-icon={usingWhyChoose ? `about.whyChooseUs.${i}.icon` : undefined}
                 />
               </div>
-              <h5 className="text-lg font-semibold text-tb-heading mb-3">{item.title}</h5>
-              <p className="text-tb-body leading-relaxed">{item.description}</p>
+              <h5 data-edit={usingWhyChoose ? `about.whyChooseUs.${i}.title` : undefined} className="text-lg font-semibold text-tb-heading mb-3">{item.title}</h5>
+              <p data-edit={usingWhyChoose ? `about.whyChooseUs.${i}.description` : undefined} className="text-tb-body leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>

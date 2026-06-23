@@ -45,9 +45,11 @@ export default function CampusLifeSection({ data }: { data: SchoolData }) {
               >
                 {/* Background image */}
                 {item.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={item.image}
                     alt={item.title}
+                    data-edit-img={`about.mission.${idx}.image`}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 )}
@@ -57,10 +59,10 @@ export default function CampusLifeSection({ data }: { data: SchoolData }) {
                 {/* Content bar */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
                   <div>
-                    <h4 className="text-white font-bold text-lg leading-tight mb-1">
+                    <h4 data-edit={`about.mission.${idx}.title`} className="text-white font-bold text-lg leading-tight mb-1">
                       {item.title}
                     </h4>
-                    <p className="text-white/70 text-sm line-clamp-1">
+                    <p data-edit={`about.mission.${idx}.description`} className="text-white/70 text-sm line-clamp-1">
                       {item.description}
                     </p>
                   </div>

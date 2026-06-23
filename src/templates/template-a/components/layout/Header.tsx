@@ -16,7 +16,7 @@ export default function Header({ data }: { data: SchoolData }) {
 
   return (
     <nav
-      className={`bg-ta-surface-bright/90 backdrop-blur-md text-ta-primary font-(family-name:--font-ta-label-md) text-(length:--text-ta-label-md) fixed top-0 w-full z-50 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}
+      className={`bg-ta-surface-bright/90 backdrop-blur-md text-ta-primary font-(family-name:--font-ta-label-md) overflow-hidden  text-(length:--text-ta-label-md) fixed top-0 w-full z-50 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}
     >
       <div className="flex justify-between container items-center mx-auto px-6 h-20">
         {/* Logo */}
@@ -30,14 +30,14 @@ export default function Header({ data }: { data: SchoolData }) {
               alt={`${data.name} Logo`}
               width={60}
               height={60}
-              className="rounded-full object-contain"
+              className="w-14 h-14 rounded-full object-contain shrink-0"
+              data-edit-img="logo"
             />
           ) : (
-            <ImagePlaceholder label="Logo" icon="lucide:image-plus" className="w-15 h-15 rounded-full shrink-0 gap-0.5" />
+            <ImagePlaceholder label="Logo" icon="lucide:image-plus" className="w-14 h-14 rounded-full shrink-0 gap-0.5" editPath="logo" />
           )}
-          <span className="hidden lg:block font-bold text-xl text-center tracking-tight text-ta-primary">
-            {data.name.split(' ').slice(0, 2).join(' ')}
-            <span className="block">{data.name.split(' ').slice(2).join(' ')}</span>
+          <span data-edit="name" className="hidden max-w-[200px] lg:block font-bold text-xl text-center tracking-tight text-ta-primary">
+            {data.name}
           </span>
         </Link>
 
@@ -45,18 +45,36 @@ export default function Header({ data }: { data: SchoolData }) {
         <ul className="hidden md:flex items-center gap-(--spacing-ta-gutter)">
           {data.navigation.map((link) => {
             const isActive = pathname === link.href || (pathname === '/' && link.label === 'Home')
+            const hasChildren = !!link.children && link.children.length > 0
             return (
-              <li key={link.label}>
+              <li key={link.label} className="relative group">
                 <Link
                   href={link.href}
-                  className={`relative transition-all duration-300 ${
+                  className={`relative inline-flex items-center gap-1 transition-all duration-300 ${
                     isActive
                       ? 'text-ta-primary-container border-b-2 border-ta-primary-container pb-1'
                       : 'text-ta-on-surface-variant hover:text-ta-primary-container hover:scale-105'
                   }`}
                 >
                   {link.label}
+                  {hasChildren && <Icon icon="lucide:chevron-down" className="w-4 h-4" />}
                 </Link>
+                {hasChildren && (
+                  <div className="absolute left-0 top-full pt-3 min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <ul className="bg-ta-surface-bright rounded-xl shadow-lg border border-ta-outline-variant/40 py-2">
+                      {link.children!.map((child) => (
+                        <li key={child.label}>
+                          <Link
+                            href={child.href}
+                            className="block px-4 py-2 text-ta-on-surface-variant hover:bg-ta-surface-container hover:text-ta-primary-container transition-colors"
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </li>
             )
           })}
@@ -94,6 +112,7 @@ export default function Header({ data }: { data: SchoolData }) {
           <ul className="flex flex-col p-4 gap-2">
             {data.navigation.map((link) => {
               const isActive = pathname === link.href || (pathname === '/' && link.label === 'Home')
+              const hasChildren = !!link.children && link.children.length > 0
               return (
                 <li key={link.label}>
                   <Link
@@ -107,6 +126,21 @@ export default function Header({ data }: { data: SchoolData }) {
                   >
                     {link.label}
                   </Link>
+                  {hasChildren && (
+                    <ul className="ml-4 mt-1 flex flex-col gap-1 border-l border-ta-outline-variant/40 pl-2">
+                      {link.children!.map((child) => (
+                        <li key={child.label}>
+                          <Link
+                            href={child.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block px-4 py-2 rounded-lg text-sm text-ta-on-surface-variant hover:bg-ta-surface-container-high transition-colors"
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               )
             })}

@@ -43,19 +43,15 @@ export default function Header({ data, page }: { data: SchoolData; page: PageTyp
                     width={75}
                     height={75}
                     className="h-[55px] w-auto object-contain"
+                    data-edit-img="logo"
                   />
                 ) : (
-                  <ImagePlaceholder label="Logo" icon="lucide:image-plus" className="w-14 h-14 rounded-full shrink-0 gap-0.5" />
+                  <ImagePlaceholder label="Logo" icon="lucide:image-plus" className="w-14 h-14 rounded-full shrink-0 gap-0.5" editPath="logo" />
                 )}
                 <div className="flex flex-col ml-1 font-(family-name:--font-inter)">
-                  <span className={`font-bold text-[19px] leading-tight uppercase tracking-normal ${isDark ? 'text-tb-heading' : 'text-tb-background'}`}>
-                    {data.name.split(' ').slice(0, 2).join(' ')}
+                  <span data-edit="name" className={`font-bold text-[19px] leading-tight uppercase tracking-normal ${isDark ? 'text-tb-heading' : 'text-tb-background'}`}>
+                    {data.name}
                   </span>
-                  {data.name.split(' ').slice(2).join(' ') && (
-                    <span className={`font-bold text-[13px] leading-tight uppercase tracking-wider ${isDark ? 'text-tb-heading' : 'text-tb-background'}`}>
-                      {data.name.split(' ').slice(2).join(' ')}
-                    </span>
-                  )}
                 </div>
               </div>
             </Link>
@@ -64,17 +60,36 @@ export default function Header({ data, page }: { data: SchoolData; page: PageTyp
             <nav className="hidden lg:flex items-center gap-9">
               {data.navigation.map((item) => {
                 const isActive = pathname === item.href || (pathname === '/' && item.href === '/')
+                const hasChildren = !!item.children && item.children.length > 0
                 return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`font-medium text-[15px] uppercase font-(family-name:--font-inter) transition-colors duration-300 py-[37px] ${isDark
-                      ? isActive ? 'text-tb-primary-400' : 'text-tb-heading hover:text-tb-primary-400'
-                      : isActive ? 'text-tb-primary-400' : 'text-tb-background hover:text-tb-primary-400'
-                      }`}
-                  >
-                    {item.label}
-                  </Link>
+                  <div key={item.href} className="relative group">
+                    <Link
+                      href={item.href}
+                      className={`inline-flex items-center gap-1 font-medium text-[15px] uppercase font-(family-name:--font-inter) transition-colors duration-300 py-[37px] ${isDark
+                        ? isActive ? 'text-tb-primary-400' : 'text-tb-heading hover:text-tb-primary-400'
+                        : isActive ? 'text-tb-primary-400' : 'text-tb-background hover:text-tb-primary-400'
+                        }`}
+                    >
+                      {item.label}
+                      {hasChildren && <Icon icon="lucide:chevron-down" className="w-4 h-4" />}
+                    </Link>
+                    {hasChildren && (
+                      <div className="absolute left-0 top-full min-w-[210px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <ul className="bg-tb-background rounded-xl shadow-xl border border-tb-line py-2">
+                          {item.children!.map((child) => (
+                            <li key={child.href}>
+                              <Link
+                                href={child.href}
+                                className="block px-4 py-2.5 text-sm uppercase font-medium text-tb-heading hover:text-tb-primary-400 transition-colors"
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                 )
               })}
             </nav>
@@ -119,6 +134,7 @@ export default function Header({ data, page }: { data: SchoolData; page: PageTyp
               <ul className="flex flex-col gap-2">
                 {data.navigation.map((item) => {
                   const isActive = pathname === item.href
+                  const hasChildren = !!item.children && item.children.length > 0
                   return (
                     <li key={item.href} className="border-b border-tb-line last:border-none">
                       <Link
@@ -129,6 +145,21 @@ export default function Header({ data, page }: { data: SchoolData; page: PageTyp
                       >
                         {item.label}
                       </Link>
+                      {hasChildren && (
+                        <ul className="ml-3 mb-3 flex flex-col gap-1 border-l border-tb-line pl-3">
+                          {item.children!.map((child) => (
+                            <li key={child.href}>
+                              <Link
+                                href={child.href}
+                                className="block py-2 text-sm uppercase font-(family-name:--font-inter) text-tb-body hover:text-tb-primary-400 transition-colors"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   )
                 })}

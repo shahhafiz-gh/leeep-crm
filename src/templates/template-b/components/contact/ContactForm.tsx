@@ -28,7 +28,9 @@ function InfoRow({ icon, label, children }: { icon: string; label: string; child
 }
 
 export default function ContactForm({ data }: { data: SchoolData }) {
-  const { contact, socialLinks } = data
+  const { contact } = data
+  // Only platforms the school has actually configured (URL set).
+  const socialLinks = data.socialLinks.filter((s) => s.url)
 
   return (
     <section className="py-16 md:py-24 bg-[#f8f9ff]">

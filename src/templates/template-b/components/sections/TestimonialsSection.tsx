@@ -116,14 +116,14 @@ export default function TestimonialsSection({ data }: { data: SchoolData }) {
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Icon
                           key={i}
-                          icon={i < (item.rating ?? 5) ? 'lucide:star' : 'lucide:star'}
-                          className={`w-4 h-4 ${i < (item.rating ?? 5) ? 'text-tb-primary-400 fill-tb-primary-400' : 'text-slate-200'}`}
-                          style={i < (item.rating ?? 5) ? { fill: '#cba73d' } : {}}
+                          icon={i < Number(item.rating ?? 5) ? 'lucide:star' : 'lucide:star'}
+                          className={`w-4 h-4 ${i < Number(item.rating ?? 5) ? 'text-tb-primary-400 fill-tb-primary-400' : 'text-slate-200'}`}
+                          style={i < Number(item.rating ?? 5) ? { fill: '#cba73d' } : {}}
                         />
                       ))}
                     </div>
 
-                    <p className="text-slate-600 text-[15px] leading-relaxed italic mb-7 grow">
+                    <p data-edit={`testimonials.${idx}.content`} className="text-slate-600 text-[15px] leading-relaxed italic mb-7 grow">
                       &ldquo;{item.content}&rdquo;
                     </p>
 
@@ -133,8 +133,8 @@ export default function TestimonialsSection({ data }: { data: SchoolData }) {
                           <Icon icon="lucide:user" className="w-5 h-5 text-tb-primary-400" />
                         </div>
                         <div>
-                          <h5 className="font-bold text-tb-secondary text-sm mb-0.5">{item.name}</h5>
-                          <span className="text-xs text-slate-400">{item.role}</span>
+                          <h5 data-edit={`testimonials.${idx}.name`} className="font-bold text-tb-secondary text-sm mb-0.5">{item.name}</h5>
+                          <span data-edit={`testimonials.${idx}.role`} className="text-xs text-slate-400">{item.role}</span>
                         </div>
                       </div>
                       <Icon icon="ri:double-quotes-r" className="w-8 h-8 text-tb-primary-400/20 shrink-0" />

@@ -2,6 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // Dev-only: skip server-side optimization. The Frappe backend is on
+    // localhost (127.0.0.1), and Next 16's image optimizer hard-blocks any
+    // upstream that resolves to a private/loopback IP (SSRF protection),
+    // returning `"url" parameter is not allowed`. With optimization off the
+    // browser loads the backend URL directly, which is unrestricted. In
+    // production FRAPPE_URL is a public host, so optimization stays ON.
+    unoptimized: process.env.NODE_ENV !== "production",
     // Allow SVG logos (e.g. the /demo emblem) through next/image. Safe here
     // because we only serve our own / Frappe assets; the CSP below neutralises
     // any scripting and forces optimized SVGs to download rather than execute.
@@ -36,9 +43,12 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
       {
+        // Frappe backend (dev): uploaded files (/files/**) and bundled
+        // assets (/assets/**). pathname must lead with "/" to match.
         protocol: "http",
         hostname: "localhost",
         port: "8000",
+        pathname: "/**",
       },
     ],
   },

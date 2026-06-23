@@ -6,7 +6,7 @@ import ScrollReveal from '@/shared/animations/scroll-reveal'
 import ImagePlaceholder from '@/templates/template-a/components/common/ImagePlaceholder'
 
 export default function GallerySection({ data }: { data: SchoolData }) {
-  const images = data.gallery.images
+  const images = data.gallery?.images ?? []
   if (images.length === 0) return null
 
   return (
@@ -20,8 +20,8 @@ export default function GallerySection({ data }: { data: SchoolData }) {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="font-(family-name:--font-ta-h2) text-(length:--text-ta-h2) text-ta-on-surface mb-4">
-              {data.gallery.title || 'Life at Our Campus'}
+            <h2 data-edit="gallery.title" className="font-(family-name:--font-ta-h2) text-(length:--text-ta-h2) text-ta-on-surface mb-4">
+              {data.gallery?.title || 'Life at Our Campus'}
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
@@ -46,9 +46,10 @@ export default function GallerySection({ data }: { data: SchoolData }) {
                   alt={image.alt}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  data-edit-img={`gallery.images.${i}.src`}
                 />
               ) : (
-                <ImagePlaceholder label="Add photo" />
+                <ImagePlaceholder label="Add photo" editPath={`gallery.images.${i}.src`} />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               {image.category && (

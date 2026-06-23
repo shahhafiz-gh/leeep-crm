@@ -10,6 +10,14 @@ import ImagePlaceholder from '@/templates/template-a/components/common/ImagePlac
 export default function Footer({ data }: { data: SchoolData }) {
   const isHomeRoute = usePathname() === '/'
 
+  // Real Frappe blobs may omit whole slices — guard them.
+  const contact = data.contact ?? { address: '', phone: [], email: [] }
+  const realColumns = data.footer?.columns ?? []
+  const hasRealColumns = realColumns.length > 0
+  const footerColumns = hasRealColumns
+    ? realColumns
+    : [{ title: 'Quick Links', links: data.navigation.map((n) => ({ label: n.label, href: n.href })) }]
+
   return (
     <footer
       className={`relative bg-[#0f1f13] ${isHomeRoute ? 'mt-20' : 'mt-12'} text-ta-inverse-on-surface overflow-visible font-(family-name:--font-ta-nunito)`}
@@ -39,9 +47,10 @@ export default function Footer({ data }: { data: SchoolData }) {
                   height={80}
                   alt={`${data.name} Logo`}
                   className="w-16 h-16 rounded-full"
+                  data-edit-img="logo"
                 />
               ) : (
-                <ImagePlaceholder label="Logo" icon="lucide:image-plus" className="w-16 h-16 rounded-full shrink-0 gap-0.5" />
+                <ImagePlaceholder label="Logo" icon="lucide:image-plus" className="w-16 h-16 rounded-full shrink-0 gap-0.5" editPath="logo" />
               )}
               <h2 className="text-2xl font-bold leading-tight text-ta-inverse-on-surface">
                 {data.name.split(' ').slice(0, 2).join(' ')}
@@ -49,42 +58,58 @@ export default function Footer({ data }: { data: SchoolData }) {
                 {data.name.split(' ').slice(2).join(' ')}
               </h2>
             </div>
-            <p className="text-ta-outline-variant text-sm leading-relaxed">
-              {data.footer.description || data.tagline}
+            <p data-edit="footer.description" className="text-ta-outline-variant text-sm leading-relaxed">
+              {data.footer?.description || data.tagline}
             </p>
             <div className="flex items-center gap-4">
-              {data.socialLinks.map((social) => (
-                <Link
+              {/* All canonical platforms render; the inline-edit layer reveals
+                  empties for editing. In LIVE (no edit layer) only platforms
+                  with a URL are visible — empties are hidden via inline style. */}
+              {data.socialLinks.map((social, si) => (
+                <a
                   key={social.platform}
-                  href={social.url}
+                  href={social.url || undefined}
+                  data-edit-social={`socialLinks.${si}.url`}
+                  data-social-platform={social.platform}
+                  data-social-url={social.url || ''}
+                  data-social-empty={social.url ? undefined : 'true'}
+                  style={social.url ? undefined : { display: 'none' }}
                   className="p-2 bg-ta-inverse-on-surface/5 rounded-full hover:bg-ta-inverse-primary/20 transition-all duration-300 hover:scale-110"
                   aria-label={social.platform}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Icon icon={social.icon || `ri:${social.platform}-fill`} className="w-[18px] h-[18px]" />
-                </Link>
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="space-y-6 flex justify-center flex-col items-center">
-            <h3 className="text-lg font-bold tracking-wider uppercase text-ta-inverse-on-surface/90">
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {data.navigation.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-ta-outline-variant hover:text-ta-inverse-primary text-sm transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Column 2: Footer link columns — data-driven (data.footer.columns),
+              falling back to navigation-derived Quick Links when none exist. */}
+          {footerColumns.map((column, ci) => (
+            <div key={column.title} className="space-y-6 flex justify-center flex-col items-center">
+              <h3
+                data-edit={hasRealColumns ? `footer.columns.${ci}.title` : undefined}
+                className="text-lg font-bold tracking-wider uppercase text-ta-inverse-on-surface/90"
+              >
+                {column.title}
+              </h3>
+              <ul className="space-y-3">
+                {column.links.map((link, li) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      data-edit-link={hasRealColumns ? `footer.columns.${ci}.links.${li}.href` : undefined}
+                      className="text-ta-outline-variant hover:text-ta-inverse-primary text-sm transition-colors duration-200"
+                    >
+                      <span data-edit={hasRealColumns ? `footer.columns.${ci}.links.${li}.label` : undefined}>{link.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           {/* Column 3: Contact */}
           <div className="space-y-6 flex justify-center flex-col items-end">
@@ -92,13 +117,15 @@ export default function Footer({ data }: { data: SchoolData }) {
               Get In Touch
             </h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Icon icon="lucide:map-pin" className="mt-1 text-ta-inverse-primary w-5 h-5" />
-                <span className="text-ta-outline-variant text-sm">
-                  {data.contact.address}
-                </span>
-              </li>
-              {data.contact.phone.map((p) => (
+              {contact.address && (
+                <li className="flex items-start gap-3">
+                  <Icon icon="lucide:map-pin" className="mt-1 text-ta-inverse-primary w-5 h-5" />
+                  <span className="text-ta-outline-variant text-sm">
+                    {contact.address}
+                  </span>
+                </li>
+              )}
+              {(contact.phone ?? []).map((p) => (
                 <li key={p} className="flex items-center gap-3">
                   <Icon icon="lucide:smartphone" className="text-ta-inverse-primary w-5 h-5" />
                   <a href={`tel:${p}`} className="text-ta-outline-variant text-sm hover:text-ta-inverse-primary transition-colors">
@@ -106,7 +133,7 @@ export default function Footer({ data }: { data: SchoolData }) {
                   </a>
                 </li>
               ))}
-              {data.contact.email.map((e) => (
+              {(contact.email ?? []).map((e) => (
                 <li key={e} className="flex items-center gap-3">
                   <Icon icon="lucide:mail" className="text-ta-inverse-primary w-5 h-5" />
                   <a href={`mailto:${e}`} className="text-ta-outline-variant text-sm underline underline-offset-4 hover:text-ta-inverse-primary transition-colors">
@@ -128,7 +155,7 @@ export default function Footer({ data }: { data: SchoolData }) {
 
         {/* Bottom Footer */}
         <div className="mt-10 pt-4 pb-4 border-t items-center justify-center border-ta-inverse-on-surface/10 flex flex-col lg:flex-row gap-2">
-          <span className="text-ta-outline-variant text-sm">{data.footer.copyright}</span>
+          <span data-edit="footer.copyright" className="text-ta-outline-variant text-sm">{data.footer?.copyright}</span>
         </div>
       </div>
     </footer>

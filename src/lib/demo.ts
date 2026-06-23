@@ -47,10 +47,19 @@ const STOCK = {
   graduation: img('1546410531-bb4caa6b424d'),
 } as const
 
-/** Normalise an incoming `?template=` value to a demo template id. */
+/**
+ * Normalise an incoming `?template=` value to a demo template id.
+ *
+ * Accepts BOTH the app's canonical template ids (`template-a` / `template-b`,
+ * used everywhere else — `TemplateId`, `config.template_id`, `set_website_template`)
+ * AND the short `a` / `b` form. This is the fix for the preview bug: a card that
+ * passes its real template id (`template-b`) must render Template B, not silently
+ * collapse to Template A. Unknown/missing → Template A (the default card).
+ */
 export function resolveDemoTemplate(raw?: string | string[]): DemoTemplate {
-  const value = Array.isArray(raw) ? raw[0] : raw
-  return value?.toUpperCase() === 'B' ? 'B' : 'A'
+  const value = (Array.isArray(raw) ? raw[0] : raw)?.toLowerCase().trim()
+  if (value === 'b' || value === 'template-b') return 'B'
+  return 'A'
 }
 
 /**

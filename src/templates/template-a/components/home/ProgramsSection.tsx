@@ -13,16 +13,18 @@ interface ProgramCardProps {
   bgColor: string
   iconColor: string
   tagColor: string
+  /** Contract path prefix for inline editing, e.g. "programs.0". */
+  path?: string
 }
 
-export function ProgramCard({ title, description, icon, subjects, bgColor, iconColor, tagColor }: ProgramCardProps) {
+export function ProgramCard({ title, description, icon, subjects, bgColor, iconColor, tagColor, path }: ProgramCardProps) {
   return (
     <div className={`${bgColor} rounded-[24px] p-9 hover:scale-[1.03] transition-transform duration-300 flex flex-col h-full border border-ta-outline-variant/30`}>
       <div className="w-12 h-12 bg-ta-surface rounded-full flex items-center justify-center mb-6 shadow-sm">
         <Icon icon={icon} className={`text-2xl ${iconColor}`} />
       </div>
-      <h3 className="font-(family-name:--font-ta-h3) text-ta-h4 text-ta-on-surface mb-4 leading-tight">{title}</h3>
-      <p className="font-(family-name:--font-ta-body-md) text-ta-body-md text-ta-on-surface-variant mb-6 grow">{description}</p>
+      <h3 data-edit={path ? `${path}.name` : undefined} className="font-(family-name:--font-ta-h3) text-ta-h4 text-ta-on-surface mb-4 leading-tight">{title}</h3>
+      <p data-edit={path ? `${path}.description` : undefined} className="font-(family-name:--font-ta-body-md) text-ta-body-md text-ta-on-surface-variant mb-6 grow">{description}</p>
       <div className="flex flex-wrap gap-2 mb-8">
         {subjects.map((subject) => (
           <span key={subject} className={`${tagColor} font-(family-name:--font-ta-label-md) text-[12px] px-3 py-1 rounded-full`}>
@@ -76,6 +78,7 @@ export default function ProgramsSection({ data }: { data: SchoolData }) {
             return (
               <ProgramCard
                 key={program.id}
+                path={`programs.${index}`}
                 title={program.name}
                 description={program.description}
                 icon={style.icon}

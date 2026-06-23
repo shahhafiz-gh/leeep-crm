@@ -42,10 +42,10 @@ export default function FacilitiesSection({ data }: { data: SchoolData }) {
                     style={{ color }}
                   />
                 </div>
-                <h5 className="text-base font-semibold text-tb-heading mb-2">
+                <h5 data-edit={`programs.${idx}.name`} className="text-base font-semibold text-tb-heading mb-2">
                   {facility.name}
                 </h5>
-                <p className="text-tb-body text-sm leading-relaxed">
+                <p data-edit={`programs.${idx}.description`} className="text-tb-body text-sm leading-relaxed">
                   {facility.description}
                 </p>
               </div>

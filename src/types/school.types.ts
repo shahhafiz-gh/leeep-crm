@@ -15,6 +15,21 @@ export interface TemplateConfig {
   template_id: TemplateId
 }
 
+// ── Website Identity (education.education.api.get_website_registration) ──
+
+/**
+ * Identity/registration record for a school's website, returned by
+ * `get_website_registration` (auth). `null` when the editor has no School Website.
+ * `subdomain === web_address === slug`.
+ */
+export interface WebsiteIdentity {
+  name: string
+  website_name: string
+  web_address: string
+  subdomain: string
+  template_id: TemplateId
+}
+
 // ── Navigation ──
 
 export interface NavigationItem {
@@ -222,24 +237,30 @@ export interface ContactData {
 export interface Announcement {
   id: string
   title: string
-  short_description?: string
-  content?: string
-  thumbnail?: string
+  short_description?: string | null
+  /** Full body — may be null/placeholder from the backend. */
+  content?: string | null
+  /** Image path/URL. May be null OR an empty string — components fall back to a placeholder. */
+  thumbnail?: string | null
   published_date?: string
-  author?: string
-  category?: string
+  /** Currently always null/placeholder from the backend. */
+  author?: string | null
+  /** Currently always null/placeholder from the backend. */
+  category?: string | null
+  /** Computed server-side at read time; defaults to false. */
   is_pinned?: boolean
 }
 
 export interface SchoolEvent {
   id: string
   title: string
-  description?: string
+  description?: string | null
   date: string
-  end_date?: string
-  location?: string
-  image?: string
-  category?: string
+  end_date?: string | null
+  location?: string | null
+  /** Image path/URL. May be null OR an empty string — components fall back to a placeholder. */
+  image?: string | null
+  category?: string | null
 }
 
 export interface UpdatesData {
@@ -255,7 +276,12 @@ export interface TestimonialData {
   role: string
   content: string
   avatar?: string
-  rating?: number
+  /**
+   * Star rating. The Frappe `get_site` payload returns this as a STRING (e.g. "5"),
+   * while local fixtures use a number — so it is `number | string`. Consumers must
+   * coerce with `Number(...)` before arithmetic/array use.
+   */
+  rating?: number | string
 }
 
 // ── Stats ──

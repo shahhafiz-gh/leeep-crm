@@ -55,12 +55,12 @@ export default function WhyChooseUsSection({ data }: { data: SchoolData }) {
               <div
                 className={`w-16 h-16 ${colorClasses[index % colorClasses.length]} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${blobClasses[index % blobClasses.length]}`}
               >
-                <Icon icon={feature.icon || 'lucide:star'} className="w-8 h-8" />
+                <Icon icon={feature.icon || 'lucide:star'} className="w-8 h-8" data-edit-icon={`about.whyChooseUs.${index}.icon`} />
               </div>
-              <h3 className="font-(family-name:--font-ta-h3) text-(length:--text-ta-h3) text-ta-on-surface mb-2">
+              <h3 data-edit={`about.whyChooseUs.${index}.title`} className="font-(family-name:--font-ta-h3) text-(length:--text-ta-h3) text-ta-on-surface mb-2">
                 {feature.title}
               </h3>
-              <p className="font-(family-name:--font-ta-body-md) text-(length:--text-ta-body-md) text-ta-on-surface-variant">
+              <p data-edit={`about.whyChooseUs.${index}.description`} className="font-(family-name:--font-ta-body-md) text-(length:--text-ta-body-md) text-ta-on-surface-variant">
                 {feature.description}
               </p>
             </div>

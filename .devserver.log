@@ -1,0 +1,389 @@
+yarn run v1.22.22
+$ next dev
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.10:3000
+- Environments: .env.local
+✓ Ready in 1062ms
+
+ GET /demo?template=A 200 in 5.2s (next.js: 1392ms, proxy.ts: 304ms, application-code: 3.5s)
+ GET /demo?template=B 200 in 5.2s (next.js: 1396ms, proxy.ts: 311ms, application-code: 3.5s)
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `TestimonialsSection`. See https://react.dev/link/warning-keys for more information.
+ GET /?school=demo 200 in 689ms (next.js: 97ms, proxy.ts: 8ms, application-code: 584ms)
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `TestimonialsSection`. See https://react.dev/link/warning-keys for more information.
+ GET /?school=demo 200 in 159ms (next.js: 8ms, proxy.ts: 5ms, application-code: 146ms)
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `TestimonialsSection`. See https://react.dev/link/warning-keys for more information.
+ GET /?school=demo&preview=1&token=9f2c7a1b4e8d6f3a0c5b9e2d7f1a4c8b6e3d9f0a2c5b8e1d4f7a0c3b6e9d2f5a 200 in 169ms (next.js: 6ms, proxy.ts: 5ms, application-code: 158ms)
+✓ Compiled in 149ms
+ GET /demo?template=A 200 in 733ms (next.js: 122ms, proxy.ts: 54ms, application-code: 556ms)
+ GET /demo?template=A 200 in 629ms (next.js: 31ms, proxy.ts: 111ms, application-code: 488ms)
+ GET /demo?template=A 200 in 625ms (next.js: 62ms, proxy.ts: 79ms, application-code: 484ms)
+ GET /demo?template=A 200 in 625ms (next.js: 166ms, proxy.ts: 80ms, application-code: 380ms)
+ GET /demo?template=B 200 in 1359ms (next.js: 227ms, proxy.ts: 51ms, application-code: 1080ms)
+ GET /demo?template=B 200 in 994ms (next.js: 107ms, proxy.ts: 102ms, application-code: 786ms)
+ GET /demo?template=B 200 in 636ms (next.js: 39ms, proxy.ts: 216ms, application-code: 382ms)
+ GET /demo?template=B 200 in 321ms (next.js: 26ms, proxy.ts: 108ms, application-code: 188ms)
+✓ Compiled in 105ms
+ GET /demo?template=A 200 in 570ms (next.js: 106ms, proxy.ts: 31ms, application-code: 433ms)
+ GET /demo?template=A 200 in 470ms (next.js: 22ms, proxy.ts: 92ms, application-code: 357ms)
+ GET /demo?template=A 200 in 426ms (next.js: 30ms, proxy.ts: 94ms, application-code: 302ms)
+ GET /demo?template=A 200 in 494ms (next.js: 75ms, proxy.ts: 95ms, application-code: 324ms)
+ GET /demo?template=B 200 in 1076ms (next.js: 169ms, proxy.ts: 31ms, application-code: 876ms)
+ GET /demo?template=B 200 in 820ms (next.js: 76ms, proxy.ts: 84ms, application-code: 660ms)
+ GET /demo?template=B 200 in 517ms (next.js: 30ms, proxy.ts: 126ms, application-code: 361ms)
+ GET /demo?template=B 200 in 317ms (next.js: 30ms, proxy.ts: 90ms, application-code: 197ms)
+✓ Compiled in 102ms
+ GET /demo?template=A 200 in 620ms (next.js: 105ms, proxy.ts: 34ms, application-code: 481ms)
+ GET /demo?template=A 200 in 493ms (next.js: 21ms, proxy.ts: 172ms, application-code: 300ms)
+ GET /demo?template=A 200 in 430ms (next.js: 27ms, proxy.ts: 68ms, application-code: 335ms)
+ GET /demo?template=A 200 in 436ms (next.js: 69ms, proxy.ts: 67ms, application-code: 299ms)
+ GET /demo?template=B 200 in 1092ms (next.js: 157ms, proxy.ts: 34ms, application-code: 901ms)
+ GET /demo?template=B 200 in 824ms (next.js: 74ms, proxy.ts: 156ms, application-code: 595ms)
+ GET /demo?template=B 200 in 482ms (next.js: 29ms, proxy.ts: 105ms, application-code: 348ms)
+ GET /demo?template=B 200 in 360ms (next.js: 34ms, proxy.ts: 112ms, application-code: 214ms)
+✓ Compiled in 85ms
+ GET /demo?template=A 200 in 596ms (next.js: 101ms, proxy.ts: 41ms, application-code: 454ms)
+ GET /demo?template=A 200 in 490ms (next.js: 24ms, proxy.ts: 78ms, application-code: 388ms)
+ GET /demo?template=A 200 in 600ms (next.js: 39ms, proxy.ts: 94ms, application-code: 466ms)
+ GET /demo?template=A 200 in 600ms (next.js: 79ms, proxy.ts: 94ms, application-code: 426ms)
+ GET /demo?template=B 200 in 1385ms (next.js: 167ms, proxy.ts: 41ms, application-code: 1178ms)
+ GET /demo?template=B 200 in 1117ms (next.js: 81ms, proxy.ts: 72ms, application-code: 964ms)
+ GET /demo?template=B 200 in 800ms (next.js: 66ms, proxy.ts: 101ms, application-code: 634ms)
+ GET /demo?template=B 200 in 542ms (next.js: 22ms, proxy.ts: 107ms, application-code: 412ms)
+✓ Compiled in 92ms
+ GET /demo?template=A 200 in 560ms (next.js: 107ms, proxy.ts: 32ms, application-code: 420ms)
+ GET /demo?template=A 200 in 426ms (next.js: 22ms, proxy.ts: 89ms, application-code: 314ms)
+ GET /demo?template=A 200 in 344ms (next.js: 27ms, proxy.ts: 70ms, application-code: 247ms)
+ GET /demo?template=A 200 in 386ms (next.js: 63ms, proxy.ts: 69ms, application-code: 254ms)
+ GET /demo?template=B 200 in 993ms (next.js: 165ms, proxy.ts: 32ms, application-code: 796ms)
+ GET /demo?template=B 200 in 741ms (next.js: 68ms, proxy.ts: 89ms, application-code: 584ms)
+ GET /demo?template=B 200 in 451ms (next.js: 27ms, proxy.ts: 100ms, application-code: 324ms)
+ GET /demo?template=B 200 in 291ms (next.js: 17ms, proxy.ts: 81ms, application-code: 193ms)
+✓ Compiled in 83ms
+ GET /demo?template=A 200 in 622ms (next.js: 103ms, proxy.ts: 35ms, application-code: 484ms)
+ GET /demo?template=A 200 in 494ms (next.js: 25ms, proxy.ts: 79ms, application-code: 390ms)
+ GET /demo?template=A 200 in 505ms (next.js: 28ms, proxy.ts: 155ms, application-code: 322ms)
+ GET /demo?template=A 200 in 598ms (next.js: 70ms, proxy.ts: 156ms, application-code: 372ms)
+ GET /demo?template=B 200 in 1083ms (next.js: 157ms, proxy.ts: 34ms, application-code: 892ms)
+ GET /demo?template=B 200 in 828ms (next.js: 64ms, proxy.ts: 71ms, application-code: 693ms)
+ GET /demo?template=B 200 in 474ms (next.js: 73ms, proxy.ts: 52ms, application-code: 349ms)
+ GET /demo?template=B 200 in 315ms (next.js: 20ms, proxy.ts: 66ms, application-code: 229ms)
+✓ Compiled in 113ms
+ GET /demo?template=A 200 in 548ms (next.js: 109ms, proxy.ts: 37ms, application-code: 402ms)
+ GET /demo?template=A 200 in 393ms (next.js: 20ms, proxy.ts: 81ms, application-code: 292ms)
+ GET /demo?template=A 200 in 386ms (next.js: 28ms, proxy.ts: 80ms, application-code: 278ms)
+ GET /demo?template=A 200 in 418ms (next.js: 64ms, proxy.ts: 81ms, application-code: 273ms)
+ GET /demo?template=B 200 in 1083ms (next.js: 176ms, proxy.ts: 37ms, application-code: 870ms)
+ GET /demo?template=B 200 in 805ms (next.js: 64ms, proxy.ts: 73ms, application-code: 669ms)
+ GET /demo?template=B 200 in 547ms (next.js: 19ms, proxy.ts: 97ms, application-code: 430ms)
+ GET /demo?template=B 200 in 394ms (next.js: 16ms, proxy.ts: 72ms, application-code: 306ms)
+✓ Compiled in 102ms
+ GET /demo?template=A 200 in 522ms (next.js: 108ms, proxy.ts: 31ms, application-code: 384ms)
+ GET /demo?template=A 200 in 409ms (next.js: 19ms, proxy.ts: 80ms, application-code: 310ms)
+ GET /demo?template=A 200 in 386ms (next.js: 27ms, proxy.ts: 71ms, application-code: 289ms)
+ GET /demo?template=A 200 in 393ms (next.js: 70ms, proxy.ts: 70ms, application-code: 253ms)
+ GET /demo?template=B 200 in 952ms (next.js: 166ms, proxy.ts: 31ms, application-code: 755ms)
+ GET /demo?template=B 200 in 705ms (next.js: 70ms, proxy.ts: 71ms, application-code: 564ms)
+ GET /demo?template=B 200 in 443ms (next.js: 80ms, proxy.ts: 53ms, application-code: 310ms)
+ GET /demo?template=B 200 in 272ms (next.js: 17ms, proxy.ts: 71ms, application-code: 185ms)
+✓ Compiled in 116ms
+ GET /demo?template=A 200 in 649ms (next.js: 115ms, proxy.ts: 37ms, application-code: 497ms)
+ GET /demo?template=A 200 in 527ms (next.js: 45ms, proxy.ts: 85ms, application-code: 398ms)
+ GET /demo?template=A 200 in 394ms (next.js: 33ms, proxy.ts: 80ms, application-code: 281ms)
+ GET /demo?template=A 200 in 460ms (next.js: 80ms, proxy.ts: 80ms, application-code: 300ms)
+ GET /demo?template=B 200 in 1123ms (next.js: 182ms, proxy.ts: 36ms, application-code: 904ms)
+ GET /demo?template=B 200 in 851ms (next.js: 156ms, proxy.ts: 75ms, application-code: 619ms)
+ GET /demo?template=B 200 in 482ms (next.js: 38ms, proxy.ts: 105ms, application-code: 340ms)
+ GET /demo?template=B 200 in 297ms (next.js: 23ms, proxy.ts: 94ms, application-code: 179ms)
+✓ Compiled in 101ms
+ GET /demo?template=A 200 in 578ms (next.js: 132ms, proxy.ts: 44ms, application-code: 402ms)
+ GET /demo?template=A 200 in 412ms (next.js: 20ms, proxy.ts: 83ms, application-code: 309ms)
+ GET /demo?template=A 200 in 468ms (next.js: 28ms, proxy.ts: 76ms, application-code: 364ms)
+ GET /demo?template=A 200 in 470ms (next.js: 69ms, proxy.ts: 77ms, application-code: 325ms)
+ GET /demo?template=B 200 in 1325ms (next.js: 189ms, proxy.ts: 44ms, application-code: 1092ms)
+ GET /demo?template=B 200 in 1031ms (next.js: 60ms, proxy.ts: 74ms, application-code: 897ms)
+ GET /demo?template=B 200 in 777ms (next.js: 40ms, proxy.ts: 97ms, application-code: 641ms)
+ GET /demo?template=B 200 in 593ms (next.js: 27ms, proxy.ts: 101ms, application-code: 465ms)
+✓ Compiled in 89ms
+ GET /demo?template=A 200 in 557ms (next.js: 113ms, proxy.ts: 41ms, application-code: 403ms)
+ GET /demo?template=A 200 in 408ms (next.js: 19ms, proxy.ts: 84ms, application-code: 304ms)
+ GET /demo?template=A 200 in 420ms (next.js: 34ms, proxy.ts: 72ms, application-code: 314ms)
+ GET /demo?template=A 200 in 428ms (next.js: 69ms, proxy.ts: 73ms, application-code: 286ms)
+ GET /demo?template=B 200 in 1036ms (next.js: 181ms, proxy.ts: 41ms, application-code: 814ms)
+ GET /demo?template=B 200 in 759ms (next.js: 70ms, proxy.ts: 76ms, application-code: 613ms)
+ GET /demo?template=B 200 in 493ms (next.js: 28ms, proxy.ts: 100ms, application-code: 365ms)
+ GET /demo?template=B 200 in 332ms (next.js: 19ms, proxy.ts: 83ms, application-code: 230ms)
+✓ Compiled in 103ms
+ GET /demo?template=A 200 in 607ms (next.js: 109ms, proxy.ts: 36ms, application-code: 462ms)
+ GET /demo?template=A 200 in 338ms (next.js: 20ms, proxy.ts: 168ms, application-code: 150ms)
+ GET /demo?template=B 200 in 624ms (next.js: 181ms, proxy.ts: 35ms, application-code: 408ms)
+ GET /demo?template=B 200 in 330ms (next.js: 62ms, proxy.ts: 149ms, application-code: 120ms)
+✓ Compiled in 86ms
+ GET /demo?template=A 200 in 647ms (next.js: 111ms, proxy.ts: 42ms, application-code: 494ms)
+ GET /demo?template=A 200 in 509ms (next.js: 19ms, proxy.ts: 83ms, application-code: 407ms)
+ GET /demo?template=A 200 in 488ms (next.js: 29ms, proxy.ts: 160ms, application-code: 299ms)
+ GET /demo?template=A 200 in 488ms (next.js: 71ms, proxy.ts: 161ms, application-code: 257ms)
+ GET /demo?template=B 200 in 1149ms (next.js: 175ms, proxy.ts: 43ms, application-code: 930ms)
+ GET /demo?template=B 200 in 878ms (next.js: 56ms, proxy.ts: 83ms, application-code: 739ms)
+ GET /demo?template=B 200 in 514ms (next.js: 25ms, proxy.ts: 117ms, application-code: 373ms)
+ GET /demo?template=B 200 in 332ms (next.js: 27ms, proxy.ts: 109ms, application-code: 195ms)
+✓ Compiled in 94ms
+ GET /demo?template=A 200 in 537ms (next.js: 109ms, proxy.ts: 32ms, application-code: 396ms)
+ GET /demo?template=A 200 in 426ms (next.js: 20ms, proxy.ts: 95ms, application-code: 311ms)
+ GET /demo?template=A 200 in 429ms (next.js: 31ms, proxy.ts: 77ms, application-code: 321ms)
+ GET /demo?template=A 200 in 429ms (next.js: 71ms, proxy.ts: 77ms, application-code: 280ms)
+ GET /demo?template=B 200 in 1007ms (next.js: 160ms, proxy.ts: 33ms, application-code: 813ms)
+ GET /demo?template=B 200 in 758ms (next.js: 72ms, proxy.ts: 73ms, application-code: 613ms)
+ GET /demo?template=B 200 in 524ms (next.js: 26ms, proxy.ts: 109ms, application-code: 389ms)
+ GET /demo?template=B 200 in 351ms (next.js: 16ms, proxy.ts: 91ms, application-code: 244ms)
+✓ Compiled in 112ms
+ GET /demo?template=A 200 in 524ms (next.js: 95ms, proxy.ts: 33ms, application-code: 397ms)
+ GET /demo?template=A 200 in 411ms (next.js: 16ms, proxy.ts: 77ms, application-code: 319ms)
+ GET /demo?template=A 200 in 360ms (next.js: 27ms, proxy.ts: 94ms, application-code: 240ms)
+ GET /demo?template=A 200 in 361ms (next.js: 62ms, proxy.ts: 94ms, application-code: 205ms)
+ GET /demo?template=B 200 in 952ms (next.js: 145ms, proxy.ts: 32ms, application-code: 775ms)
+ GET /demo?template=B 200 in 720ms (next.js: 59ms, proxy.ts: 76ms, application-code: 586ms)
+ GET /demo?template=B 200 in 445ms (next.js: 25ms, proxy.ts: 102ms, application-code: 318ms)
+ GET /demo?template=B 200 in 283ms (next.js: 21ms, proxy.ts: 72ms, application-code: 191ms)
+✓ Compiled in 97ms
+ GET /demo?template=A 200 in 695ms (next.js: 102ms, proxy.ts: 36ms, application-code: 557ms)
+ GET /demo?template=A 200 in 545ms (next.js: 18ms, proxy.ts: 193ms, application-code: 334ms)
+ GET /demo?template=A 200 in 495ms (next.js: 29ms, proxy.ts: 90ms, application-code: 376ms)
+ GET /demo?template=A 200 in 544ms (next.js: 68ms, proxy.ts: 90ms, application-code: 386ms)
+ GET /demo?template=B 200 in 1428ms (next.js: 159ms, proxy.ts: 36ms, application-code: 1233ms)
+ GET /demo?template=B 200 in 1142ms (next.js: 82ms, proxy.ts: 174ms, application-code: 886ms)
+ GET /demo?template=B 200 in 744ms (next.js: 23ms, proxy.ts: 101ms, application-code: 620ms)
+ GET /demo?template=B 200 in 575ms (next.js: 22ms, proxy.ts: 107ms, application-code: 446ms)
+✓ Compiled in 90ms
+ GET /demo?template=A 200 in 634ms (next.js: 122ms, proxy.ts: 54ms, application-code: 458ms)
+ GET /demo?template=A 200 in 493ms (next.js: 26ms, proxy.ts: 81ms, application-code: 385ms)
+ GET /demo?template=A 200 in 545ms (next.js: 35ms, proxy.ts: 80ms, application-code: 431ms)
+ GET /demo?template=A 200 in 559ms (next.js: 86ms, proxy.ts: 80ms, application-code: 393ms)
+ GET /demo?template=B 200 in 1230ms (next.js: 196ms, proxy.ts: 53ms, application-code: 981ms)
+ GET /demo?template=B 200 in 920ms (next.js: 86ms, proxy.ts: 75ms, application-code: 760ms)
+ GET /demo?template=B 200 in 611ms (next.js: 54ms, proxy.ts: 116ms, application-code: 442ms)
+ GET /demo?template=B 200 in 406ms (next.js: 30ms, proxy.ts: 113ms, application-code: 263ms)
+✓ Compiled in 87ms
+ GET /demo?template=A 200 in 618ms (next.js: 156ms, proxy.ts: 36ms, application-code: 425ms)
+ GET /demo?template=A 200 in 604ms (next.js: 62ms, proxy.ts: 173ms, application-code: 369ms)
+ GET /demo?template=A 200 in 449ms (next.js: 154ms, proxy.ts: 98ms, application-code: 197ms)
+ GET /demo?template=A 200 in 131ms (next.js: 20ms, proxy.ts: 25ms, application-code: 86ms)
+ GET /demo?template=B 200 in 1084ms (next.js: 98ms, proxy.ts: 35ms, application-code: 951ms)
+ GET /demo?template=B 200 in 832ms (next.js: 19ms, proxy.ts: 173ms, application-code: 639ms)
+ GET /demo?template=B 200 in 567ms (next.js: 24ms, proxy.ts: 68ms, application-code: 475ms)
+ GET /demo?template=B 200 in 568ms (next.js: 60ms, proxy.ts: 68ms, application-code: 440ms)
+✓ Compiled in 96ms
+ GET /demo?template=A 200 in 488ms (next.js: 92ms, proxy.ts: 37ms, application-code: 360ms)
+ GET /demo?template=A 200 in 261ms (next.js: 23ms, proxy.ts: 85ms, application-code: 154ms)
+ GET /demo?template=B 200 in 506ms (next.js: 148ms, proxy.ts: 37ms, application-code: 322ms)
+ GET /demo?template=B 200 in 264ms (next.js: 59ms, proxy.ts: 78ms, application-code: 127ms)
+✓ Compiled in 97ms
+ GET /demo?template=A 200 in 520ms (next.js: 103ms, proxy.ts: 38ms, application-code: 379ms)
+ GET /demo?template=A 200 in 256ms (next.js: 17ms, proxy.ts: 78ms, application-code: 161ms)
+ GET /demo?template=B 200 in 538ms (next.js: 165ms, proxy.ts: 38ms, application-code: 335ms)
+ GET /demo?template=B 200 in 270ms (next.js: 59ms, proxy.ts: 78ms, application-code: 133ms)
+✓ Compiled in 97ms
+ GET /demo?template=A 200 in 655ms (next.js: 104ms, proxy.ts: 30ms, application-code: 520ms)
+ GET /demo?template=A 200 in 568ms (next.js: 23ms, proxy.ts: 95ms, application-code: 451ms)
+ GET /demo?template=A 200 in 585ms (next.js: 37ms, proxy.ts: 164ms, application-code: 384ms)
+ GET /demo?template=A 200 in 654ms (next.js: 92ms, proxy.ts: 164ms, application-code: 397ms)
+ GET /demo?template=B 200 in 1253ms (next.js: 169ms, proxy.ts: 31ms, application-code: 1053ms)
+ GET /demo?template=B 200 in 954ms (next.js: 92ms, proxy.ts: 82ms, application-code: 781ms)
+ GET /demo?template=B 200 in 608ms (next.js: 54ms, proxy.ts: 149ms, application-code: 404ms)
+ GET /demo?template=B 200 in 346ms (next.js: 29ms, proxy.ts: 110ms, application-code: 207ms)
+✓ Compiled in 95ms
+ GET /demo?template=A 200 in 564ms (next.js: 104ms, proxy.ts: 32ms, application-code: 428ms)
+ GET /demo?template=A 200 in 451ms (next.js: 21ms, proxy.ts: 102ms, application-code: 327ms)
+ GET /demo?template=A 200 in 558ms (next.js: 27ms, proxy.ts: 69ms, application-code: 462ms)
+ GET /demo?template=A 200 in 565ms (next.js: 64ms, proxy.ts: 70ms, application-code: 432ms)
+ GET /demo?template=B 200 in 1157ms (next.js: 154ms, proxy.ts: 31ms, application-code: 972ms)
+ GET /demo?template=B 200 in 915ms (next.js: 63ms, proxy.ts: 103ms, application-code: 749ms)
+ GET /demo?template=B 200 in 605ms (next.js: 58ms, proxy.ts: 84ms, application-code: 463ms)
+ GET /demo?template=B 200 in 312ms (next.js: 25ms, proxy.ts: 102ms, application-code: 185ms)
+✓ Compiled in 94ms
+ GET /demo?template=A 200 in 639ms (next.js: 113ms, proxy.ts: 47ms, application-code: 480ms)
+ GET /demo?template=A 200 in 526ms (next.js: 23ms, proxy.ts: 103ms, application-code: 400ms)
+ GET /demo?template=A 200 in 455ms (next.js: 78ms, proxy.ts: 88ms, application-code: 288ms)
+ GET /demo?template=A 200 in 460ms (next.js: 31ms, proxy.ts: 89ms, application-code: 340ms)
+ GET /demo?template=B 200 in 1223ms (next.js: 165ms, proxy.ts: 47ms, application-code: 1011ms)
+ GET /demo?template=B 200 in 949ms (next.js: 81ms, proxy.ts: 102ms, application-code: 767ms)
+ GET /demo?template=B 200 in 596ms (next.js: 33ms, proxy.ts: 134ms, application-code: 429ms)
+ GET /demo?template=B 200 in 374ms (next.js: 25ms, proxy.ts: 110ms, application-code: 240ms)
+✓ Compiled in 98ms
+ GET /demo?template=A 200 in 906ms (next.js: 143ms, proxy.ts: 49ms, application-code: 714ms)
+ GET /demo?template=A 200 in 1011ms (next.js: 222ms, proxy.ts: 125ms, application-code: 664ms)
+ GET /demo?template=A 200 in 562ms (next.js: 366ms, proxy.ts: 15ms, application-code: 181ms)
+ GET /demo?template=A 200 in 121ms (next.js: 21ms, proxy.ts: 14ms, application-code: 85ms)
+ GET /demo?template=B 200 in 1494ms (next.js: 217ms, proxy.ts: 49ms, application-code: 1229ms)
+ GET /demo?template=B 200 in 1146ms (next.js: 35ms, proxy.ts: 131ms, application-code: 980ms)
+ GET /demo?template=B 200 in 728ms (next.js: 43ms, proxy.ts: 120ms, application-code: 565ms)
+ GET /demo?template=B 200 in 727ms (next.js: 116ms, proxy.ts: 120ms, application-code: 491ms)
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `TestimonialsSection`. See https://react.dev/link/warning-keys for more information.
+ GET /?school=demo 200 in 2.2s (next.js: 109ms, proxy.ts: 7ms, application-code: 2.1s)
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `TestimonialsSection`. See https://react.dev/link/warning-keys for more information.
+ GET /?school=demo&preview=1&token=9f2c7a1b4e8d6f3a0c5b9e2d7f1a4c8b6e3d9f0a2c5b8e1d4f7a0c3b6e9d2f5a 200 in 175ms (next.js: 5ms, proxy.ts: 4ms, application-code: 165ms)
+ GET /demo?template=A 200 in 389ms (next.js: 103ms, proxy.ts: 76ms, application-code: 210ms)
+ GET /demo?template=B 200 in 395ms (next.js: 183ms, proxy.ts: 75ms, application-code: 137ms)
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `TestimonialsSection`. See https://react.dev/link/warning-keys for more information.
+ GET /?school=demo&preview=1&token=9f2c7a1b4e8d6f3a0c5b9e2d7f1a4c8b6e3d9f0a2c5b8e1d4f7a0c3b6e9d2f5a 200 in 471ms (next.js: 95ms, proxy.ts: 5ms, application-code: 371ms)
+Each child in a list should have a unique "key" prop.
+
+Check the render method of `TestimonialsSection`. See https://react.dev/link/warning-keys for more information.
+ GET /?school=demo 200 in 143ms (next.js: 5ms, proxy.ts: 5ms, application-code: 133ms)
+[browser] Image with src "/assets/demo/logo.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[browser] Image with src "/assets/demo/logo.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET /demo?template=A 200 in 1340ms (next.js: 33ms, proxy.ts: 15ms, application-code: 1293ms)
+[browser] Image with src "/assets/demo/logo.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+ GET /demo?template=A 200 in 4.2s (next.js: 46ms, proxy.ts: 20ms, application-code: 4.1s)
+ GET /demo?template=B 200 in 4.2s (next.js: 158ms, proxy.ts: 22ms, application-code: 4.0s)
+[browser] Image with src "/assets/demo/logo.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[browser] Image with src "/assets/demo/logo.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+⨯ Error: getSiteData: failed to load site data for school="iei" (mode=published): Frappe returned 404 NOT FOUND from http://localhost:8000/api/method/education.education.website_builder.get_site?school=iei&mode=published
+    at <unknown> (src\lib\cms.ts:161:13)
+  159 |         return pickLocalMock(school)
+  160 |       }
+> 161 |       throw new Error(
+      |             ^
+  162 |         `getSiteData: failed to load site data for school="${school}" (mode=${mode}): ${r...
+  163 |       )
+  164 |     } {
+  digest: '1718254301'
+}
+⨯ Error: getSiteData: failed to load site data for school="iei" (mode=published): Frappe returned 404 NOT FOUND from http://localhost:8000/api/method/education.education.website_builder.get_site?school=iei&mode=published
+    at <unknown> (src\lib\cms.ts:161:13)
+  159 |         return pickLocalMock(school)
+  160 |       }
+> 161 |       throw new Error(
+      |             ^
+  162 |         `getSiteData: failed to load site data for school="${school}" (mode=${mode}): ${r...
+  163 |       )
+  164 |     } {
+  digest: '1718254301'
+}
+ GET /?preview=1&subdomain=demo&token=9f2c7a1b4e8d6f3a0c5b9e2d7f1a4c8b6e3d9f0a2c5b8e1d4f7a0c3b6e9d2f5a&template=A 500 in 656ms (next.js: 15ms, proxy.ts: 11ms, application-code: 630ms)
+[browser] Uncaught Error: getSiteData: failed to load site data for school="iei" (mode=published): Frappe returned 404 NOT FOUND from http://localhost:8000/api/method/education.education.website_builder.get_site?school=iei&mode=published
+    at <anonymous> (src\lib\cms.ts:161:13)
+  159 |         return pickLocalMock(school)
+  160 |       }
+> 161 |       throw new Error(
+      |             ^
+  162 |         `getSiteData: failed to load site data for school="${school}" (mode=${mode}): ${r...
+  163 |       )
+  164 |     }
+  Reload env: .env.local
+✓ Compiled in 214ms
+⨯ TypeError: Cannot read properties of undefined (reading 'phone')
+    at AboutSection (src\templates\template-a\components\home\AboutSection.tsx:115:29)
+  113 |               </Link>
+  114 |
+> 115 |               {data.contact.phone[0] && (
+      |                             ^
+  116 |                 <div className="flex items-center gap-3 text-ta-on-surface-variant group ...
+  117 |                   <div className="bg-ta-surface-container-high p-3 rounded-full group-hov...
+  118 |                     <Icon icon="lucide:phone" className="text-ta-primary" /> {
+  digest: '319918036'
+}
+ GET /?preview=1&subdomain=demo&token=9f2c7a1b4e8d6f3a0c5b9e2d7f1a4c8b6e3d9f0a2c5b8e1d4f7a0c3b6e9d2f5a&template=A 500 in 1056ms (next.js: 189ms, proxy.ts: 132ms, application-code: 735ms)
+[browser] Uncaught TypeError: Cannot read properties of undefined (reading 'phone')
+    at AboutSection (src/templates/template-a/components/home/AboutSection.tsx:115:29)
+    at HomeView (src\templates\template-a\views\HomeView.tsx:23:7)
+    at TemplateA (src\templates\template-a\TemplateA.tsx:39:9)
+    at renderTemplate (src\lib\render-template.tsx:24:10)
+    at HomePage (src\app\page.tsx:29:22)
+  113 |               </Link>
+  114 |
+> 115 |               {data.contact.phone[0] && (
+      |                             ^
+  116 |                 <div className="flex items-center gap-3 text-ta-on-surface-variant group ...
+  117 |                   <div className="bg-ta-surface-container-high p-3 rounded-full group-hov...
+  118 |                     <Icon icon="lucide:phone" className="text-ta-primary" />
+⨯ TypeError: Cannot read properties of undefined (reading 'phone')
+    at AboutSection (src\templates\template-a\components\home\AboutSection.tsx:115:29)
+  113 |               </Link>
+  114 |
+> 115 |               {data.contact.phone[0] && (
+      |                             ^
+  116 |                 <div className="flex items-center gap-3 text-ta-on-surface-variant group ...
+  117 |                   <div className="bg-ta-surface-container-high p-3 rounded-full group-hov...
+  118 |                     <Icon icon="lucide:phone" className="text-ta-primary" /> {
+  digest: '319918036'
+}
+ GET /?preview=1&subdomain=demo&token=9f2c7a1b4e8d6f3a0c5b9e2d7f1a4c8b6e3d9f0a2c5b8e1d4f7a0c3b6e9d2f5a&template=A 500 in 704ms (next.js: 37ms, proxy.ts: 239ms, application-code: 428ms)
+ResponseAborted: 
+    at ignore-listed frames
+ GET /demo?template=A 200 in 1782ms (next.js: 275ms, proxy.ts: 21ms, application-code: 1487ms)
+ GET /demo?template=B 200 in 2.1s (next.js: 518ms, proxy.ts: 22ms, application-code: 1568ms)
+[browser] Image with src "/assets/demo/logo.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[browser] Image with src "/assets/demo/logo.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[browser] Image with src "/assets/demo/logo.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[browser] Image with src "/assets/demo/logo.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[browser] Image with src "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+⨯ TypeError: Cannot read properties of undefined (reading 'phone')
+    at AboutSection (src\templates\template-a\components\home\AboutSection.tsx:115:29)
+  113 |               </Link>
+  114 |
+> 115 |               {data.contact.phone[0] && (
+      |                             ^
+  116 |                 <div className="flex items-center gap-3 text-ta-on-surface-variant group ...
+  117 |                   <div className="bg-ta-surface-container-high p-3 rounded-full group-hov...
+  118 |                     <Icon icon="lucide:phone" className="text-ta-primary" /> {
+  digest: '319918036'
+}
+ GET /?preview=1&subdomain=demo&token=9f2c7a1b4e8d6f3a0c5b9e2d7f1a4c8b6e3d9f0a2c5b8e1d4f7a0c3b6e9d2f5a&template=A 500 in 277ms (next.js: 12ms, proxy.ts: 12ms, application-code: 254ms)
+[browser] Uncaught TypeError: Cannot read properties of undefined (reading 'phone')
+    at AboutSection (src/templates/template-a/components/home/AboutSection.tsx:115:29)
+    at HomeView (src\templates\template-a\views\HomeView.tsx:23:7)
+    at TemplateA (src\templates\template-a\TemplateA.tsx:39:9)
+    at renderTemplate (src\lib\render-template.tsx:24:10)
+    at HomePage (src\app\page.tsx:29:22)
+  113 |               </Link>
+  114 |
+> 115 |               {data.contact.phone[0] && (
+      |                             ^
+  116 |                 <div className="flex items-center gap-3 text-ta-on-surface-variant group ...
+  117 |                   <div className="bg-ta-surface-container-high p-3 rounded-full group-hov...
+  118 |                     <Icon icon="lucide:phone" className="text-ta-primary" />
+⨯ TypeError: Cannot read properties of undefined (reading 'phone')
+    at AboutSection (src\templates\template-a\components\home\AboutSection.tsx:115:29)
+  113 |               </Link>
+  114 |
+> 115 |               {data.contact.phone[0] && (
+      |                             ^
+  116 |                 <div className="flex items-center gap-3 text-ta-on-surface-variant group ...
+  117 |                   <div className="bg-ta-surface-container-high p-3 rounded-full group-hov...
+  118 |                     <Icon icon="lucide:phone" className="text-ta-primary" /> {
+  digest: '319918036'
+}
+ GET /?preview=1&subdomain=demo&token=9f2c7a1b4e8d6f3a0c5b9e2d7f1a4c8b6e3d9f0a2c5b8e1d4f7a0c3b6e9d2f5a&template=A 500 in 317ms (next.js: 8ms, proxy.ts: 14ms, application-code: 295ms)
+[browser] Uncaught TypeError: Cannot read properties of undefined (reading 'phone')
+    at AboutSection (src/templates/template-a/components/home/AboutSection.tsx:115:29)
+    at HomeView (src\templates\template-a\views\HomeView.tsx:23:7)
+    at TemplateA (src\templates\template-a\TemplateA.tsx:39:9)
+    at renderTemplate (src\lib\render-template.tsx:24:10)
+    at HomePage (src\app\page.tsx:29:22)
+  113 |               </Link>
+  114 |
+> 115 |               {data.contact.phone[0] && (
+      |                             ^
+  116 |                 <div className="flex items-center gap-3 text-ta-on-surface-variant group ...
+  117 |                   <div className="bg-ta-surface-container-high p-3 rounded-full group-hov...
+  118 |                     <Icon icon="lucide:phone" className="text-ta-primary" />
+[?25h
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

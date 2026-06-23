@@ -11,9 +11,11 @@ interface TestimonialCardProps {
   content: string
   avatar?: string
   rating?: number
+  /** Contract path prefix for inline editing, e.g. "testimonials.0". */
+  path?: string
 }
 
-export function TestimonialCard({ name, role, content, rating = 5 }: TestimonialCardProps) {
+export function TestimonialCard({ name, role, content, rating = 5, path }: TestimonialCardProps) {
   return (
     <div className="bg-ta-surface-container-lowest rounded-[24px] shadow-sm border-l-4 border-ta-primary p-8 flex flex-col h-full hover:-translate-y-1 transition-all duration-300 group">
       <div className="flex text-amber-400 mb-6 space-x-1">
@@ -22,7 +24,7 @@ export function TestimonialCard({ name, role, content, rating = 5 }: Testimonial
         ))}
       </div>
 
-      <p className="font-(family-name:--font-ta-body-md) italic text-ta-on-surface mb-8 grow leading-relaxed">
+      <p data-edit={path ? `${path}.content` : undefined} className="font-(family-name:--font-ta-body-md) italic text-ta-on-surface mb-8 grow leading-relaxed">
         &ldquo;{content}&rdquo;
       </p>
 
@@ -31,8 +33,8 @@ export function TestimonialCard({ name, role, content, rating = 5 }: Testimonial
           <Icon icon="lucide:user" className="text-2xl" />
         </div>
         <div>
-          <div className="font-(family-name:--font-ta-h3) text-[16px] text-ta-on-surface leading-tight mb-1">{name}</div>
-          <div className="font-(family-name:--font-ta-label-md) text-[13px] text-ta-on-surface-variant leading-none">{role}</div>
+          <div data-edit={path ? `${path}.name` : undefined} className="font-(family-name:--font-ta-h3) text-[16px] text-ta-on-surface leading-tight mb-1">{name}</div>
+          <div data-edit={path ? `${path}.role` : undefined} className="font-(family-name:--font-ta-label-md) text-[13px] text-ta-on-surface-variant leading-none">{role}</div>
         </div>
       </div>
     </div>
@@ -116,10 +118,11 @@ export default function TestimonialsSection({ data }: { data: SchoolData }) {
                 className="snap-start shrink-0 w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
               >
                 <TestimonialCard
+                  path={`testimonials.${i}`}
                   name={t.name}
                   role={t.role}
                   content={t.content}
-                  rating={t.rating}
+                  rating={t.rating != null ? Number(t.rating) : undefined}
                 />
               </div>
             ))}

@@ -14,6 +14,10 @@ export default function AdmissionsSection({ data }: { data: SchoolData }) {
   const prevYear = currentYear - 1
   const session = `${prevYear}–${currentYear.toString().slice(-2)}`
 
+  // Real Frappe blobs may omit the whole `admissions` slice — guard it.
+  const admissions = data.admissions ?? {}
+  const highlights = admissions.highlights ?? []
+
   return (
     <section
       id="admissions"
@@ -41,7 +45,7 @@ export default function AdmissionsSection({ data }: { data: SchoolData }) {
               variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-              {data.admissions.subtitle || `${session} Admissions`}
+              <span data-edit="admissions.subtitle">{admissions.subtitle || `${session} Admissions`}</span>
             </motion.span>
 
             <motion.h2
@@ -49,7 +53,7 @@ export default function AdmissionsSection({ data }: { data: SchoolData }) {
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-              {data.admissions.title || "Shape Your Child's Future"}
+              <span data-edit="admissions.title">{admissions.title || "Shape Your Child's Future"}</span>
             </motion.h2>
 
             <motion.p
@@ -57,8 +61,26 @@ export default function AdmissionsSection({ data }: { data: SchoolData }) {
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-              {data.admissions.description || `Nurturing young minds with values and academic excellence. Admissions are now open for the ${session} session.`}
+              <span data-edit="admissions.description">{admissions.description || `Nurturing young minds with values and academic excellence. Admissions are now open for the ${session} session.`}</span>
             </motion.p>
+
+            {highlights.length > 0 && (
+              <motion.div
+                className="flex flex-wrap gap-3 pt-2"
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+              >
+                {highlights.map((highlight, hi) => (
+                  <span
+                    key={highlight.label}
+                    className="inline-flex items-center gap-2 bg-white/15 text-white px-4 py-2 rounded-full font-(family-name:--font-ta-label-md) text-ta-label-md backdrop-blur-sm border border-white/20"
+                  >
+                    <Icon icon={highlight.icon ?? 'lucide:check'} className="w-4 h-4 shrink-0" data-edit-icon={`admissions.highlights.${hi}.icon`} />
+                    <span data-edit={`admissions.highlights.${hi}.label`}>{highlight.label}</span>
+                  </span>
+                ))}
+              </motion.div>
+            )}
 
             <motion.div
               className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4 w-full sm:w-auto"
@@ -84,18 +106,18 @@ export default function AdmissionsSection({ data }: { data: SchoolData }) {
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
               <div className="relative w-full h-full rounded-full overflow-hidden z-10 border-4 border-white/50 shadow-2xl bg-ta-surface">
-                {data.admissions.image ? (
-                  <Image src={data.admissions.image} alt="Admissions" fill className="object-cover" />
+                {admissions.image ? (
+                  <Image src={admissions.image} alt="Admissions" fill className="object-cover" data-edit-img="admissions.image" />
                 ) : (
-                  <ImagePlaceholder label="Add admissions image" icon="lucide:graduation-cap" />
+                  <ImagePlaceholder label="Add admissions image" icon="lucide:graduation-cap" editPath="admissions.image" />
                 )}
               </div>
 
               {/* Floating card */}
-              {data.admissions.callout && (
+              {admissions.callout && (
                 <div className="absolute -left-6 top-12 bg-white rounded-lg p-3 shadow-lg z-20 flex items-center gap-2 -rotate-3">
-                  <Icon icon={data.admissions.callout.icon ?? 'lucide:star'} className="text-amber-400 fill-amber-400 w-5 h-5" />
-                  <span className="font-bold text-ta-label-md text-ta-on-surface whitespace-nowrap">{data.admissions.callout.label}</span>
+                  <Icon icon={admissions.callout.icon ?? 'lucide:star'} className="text-amber-400 fill-amber-400 w-5 h-5" data-edit-icon="admissions.callout.icon" />
+                  <span className="font-bold text-ta-label-md text-ta-on-surface whitespace-nowrap" data-edit="admissions.callout.label">{admissions.callout.label}</span>
                 </div>
               )}
 

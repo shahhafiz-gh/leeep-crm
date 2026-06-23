@@ -7,6 +7,12 @@ interface ImagePlaceholderProps {
   icon?: string
   /** Extra classes for sizing/shape (the placeholder fills its parent by default). */
   className?: string
+  /**
+   * Content path of the image this slot fills (e.g. "logo"). When set, the empty
+   * placeholder becomes a clickable upload target for the inline-edit layer — so
+   * an image can be ADDED, not just replaced.
+   */
+  editPath?: string
 }
 
 /**
@@ -18,9 +24,11 @@ export default function ImagePlaceholder({
   label = 'Add image',
   icon = 'lucide:image-plus',
   className = '',
+  editPath,
 }: ImagePlaceholderProps) {
   return (
     <div
+      data-edit-img={editPath}
       className={`w-full h-full flex flex-col items-center justify-center gap-2 bg-slate-100 border-2 border-dashed border-slate-300 ${className}`}
     >
       <Icon icon={icon} className="text-4xl text-slate-400" />

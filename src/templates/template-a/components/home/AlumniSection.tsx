@@ -49,7 +49,7 @@ export default function AlumniSection({ data }: { data: SchoolData }) {
                 icon="lucide:quote"
                 className="absolute top-6 right-6 text-4xl text-ta-primary/10 group-hover:text-ta-primary/20 transition-colors"
               />
-              <p className="font-(family-name:--font-ta-body-md) text-ta-on-surface-variant leading-relaxed mb-8 italic">
+              <p data-edit={`alumni.${i}.testimonial`} className="font-(family-name:--font-ta-body-md) text-ta-on-surface-variant leading-relaxed mb-8 italic">
                 &ldquo;{person.testimonial}&rdquo;
               </p>
               <div className="flex items-center gap-4">
@@ -57,9 +57,9 @@ export default function AlumniSection({ data }: { data: SchoolData }) {
                   <Icon icon={alumniIcons[i % alumniIcons.length]} className="text-2xl text-ta-on-primary-container" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-(family-name:--font-ta-label-md) text-ta-on-surface font-bold truncate">{person.name}</h3>
-                  <p className="text-ta-primary font-(family-name:--font-ta-label-md) text-sm font-semibold">{person.achievement}</p>
-                  <p className="text-ta-on-surface-variant text-xs mt-0.5">Batch {person.batch}</p>
+                  <h3 data-edit={`alumni.${i}.name`} className="font-(family-name:--font-ta-label-md) text-ta-on-surface font-bold truncate">{person.name}</h3>
+                  <p data-edit={`alumni.${i}.achievement`} className="text-ta-primary font-(family-name:--font-ta-label-md) text-sm font-semibold">{person.achievement}</p>
+                  <p className="text-ta-on-surface-variant text-xs mt-0.5">Batch <span data-edit={`alumni.${i}.batch`}>{person.batch}</span></p>
                 </div>
               </div>
             </div>

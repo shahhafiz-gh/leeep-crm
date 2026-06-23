@@ -24,9 +24,10 @@ export default function AboutSection({ data }: { data: SchoolData }) {
                   alt={`Students at ${data.name}`}
                   fill
                   className="object-cover"
+                  data-edit-img="about.image"
                 />
               ) : (
-                <ImagePlaceholder label="Add about image" />
+                <ImagePlaceholder label="Add about image" editPath="about.image" />
               )}
             </div>
 
@@ -35,12 +36,12 @@ export default function AboutSection({ data }: { data: SchoolData }) {
               <ScrollReveal direction="left" delay={0.2} className="absolute top-4 -left-2 md:top-8 md:-left-8 z-20">
                 <div className="bg-ta-tertiary-container text-ta-on-tertiary-container px-4 py-3 rounded-2xl shadow-lg flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-ta-on-tertiary-container/10 flex items-center justify-center">
-                    <Icon icon={data.about.badges[0].icon ?? 'lucide:landmark'} className="w-5 h-5" />
+                    <Icon icon={data.about.badges[0].icon ?? 'lucide:landmark'} className="w-5 h-5" data-edit-icon="about.badges.0.icon" />
                   </div>
                   <div>
-                    <div className="font-bold text-sm">{data.about.badges[0].label}</div>
+                    <div className="font-bold text-sm" data-edit="about.badges.0.label">{data.about.badges[0].label}</div>
                     {data.about.badges[0].sublabel && (
-                      <div className="text-xs opacity-80">{data.about.badges[0].sublabel}</div>
+                      <div className="text-xs opacity-80" data-edit="about.badges.0.sublabel">{data.about.badges[0].sublabel}</div>
                     )}
                   </div>
                 </div>
@@ -52,12 +53,12 @@ export default function AboutSection({ data }: { data: SchoolData }) {
               <ScrollReveal direction="right" delay={0.4} className="absolute bottom-4 -right-2 md:bottom-8 md:-right-8 z-20">
                 <div className="bg-ta-secondary-container text-ta-on-secondary-container px-4 py-3 rounded-2xl shadow-lg flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-ta-on-secondary-container/10 flex items-center justify-center">
-                    <Icon icon={data.about.badges[1].icon ?? 'lucide:shield-check'} className="w-5 h-5" />
+                    <Icon icon={data.about.badges[1].icon ?? 'lucide:shield-check'} className="w-5 h-5" data-edit-icon="about.badges.1.icon" />
                   </div>
                   <div>
-                    <div className="font-bold text-sm">{data.about.badges[1].label}</div>
+                    <div className="font-bold text-sm" data-edit="about.badges.1.label">{data.about.badges[1].label}</div>
                     {data.about.badges[1].sublabel && (
-                      <div className="text-xs opacity-80">{data.about.badges[1].sublabel}</div>
+                      <div className="text-xs opacity-80" data-edit="about.badges.1.sublabel">{data.about.badges[1].sublabel}</div>
                     )}
                   </div>
                 </div>
@@ -68,17 +69,17 @@ export default function AboutSection({ data }: { data: SchoolData }) {
           {/* Right Column: Content */}
           <div className="flex flex-col items-start gap-6 md:gap-8 relative z-10 px-4 md:px-0">
             <div className="flex items-center gap-2">
-              <span className="bg-ta-primary/10 text-ta-primary font-bold text-ta-label-md px-4 py-1 rounded-full uppercase tracking-wider">
+              <span data-edit="about.title" className="bg-ta-primary/10 text-ta-primary font-bold text-ta-label-md px-4 py-1 rounded-full uppercase tracking-wider">
                 {data.about.title || 'About Us'}
               </span>
               <Icon icon="lucide:stars" className="text-ta-primary text-xl" />
             </div>
 
-            <h2 className="font-(family-name:--font-ta-h2) text-3xl md:text-ta-h2 text-ta-on-surface m-0 leading-tight">
+            <h2 data-edit="about.subtitle" className="font-(family-name:--font-ta-h2) text-3xl md:text-ta-h2 text-ta-on-surface m-0 leading-tight">
               {data.about.subtitle || 'Nurturing Excellence in Education'}
             </h2>
 
-            <p className="font-(family-name:--font-ta-body-lg) text-ta-body-lg text-ta-on-surface-variant leading-relaxed">
+            <p data-edit="about.description" className="font-(family-name:--font-ta-body-lg) text-ta-body-lg text-ta-on-surface-variant leading-relaxed">
               {data.about.description}
             </p>
 
@@ -111,16 +112,16 @@ export default function AboutSection({ data }: { data: SchoolData }) {
                 </button>
               </Link>
 
-              {data.contact.phone[0] && (
+              {data.contact?.phone?.[0] && (
                 <div className="flex items-center gap-3 text-ta-on-surface-variant group cursor-pointer">
                   <div className="bg-ta-surface-container-high p-3 rounded-full group-hover:bg-ta-primary/10 transition-colors">
                     <Icon icon="lucide:phone" className="text-ta-primary" />
                   </div>
                   <a
-                    href={`tel:${data.contact.phone[0]}`}
+                    href={`tel:${data.contact?.phone?.[0]}`}
                     className="font-(family-name:--font-ta-label-md) text-ta-label-md font-bold text-ta-on-surface hover:text-ta-primary transition-colors"
                   >
-                    {data.contact.phone[0]}
+                    {data.contact?.phone?.[0]}
                   </a>
                 </div>
               )}

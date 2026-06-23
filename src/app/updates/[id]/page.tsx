@@ -1,10 +1,8 @@
 import { headers } from 'next/headers'
-import { notFound } from 'next/navigation'
-import { getSchoolData, resolvePreviewOptions, type RouteSearchParams } from '@/lib/frappe'
-import { buildMetadata } from '@/lib/metadata'
 import type { Metadata } from 'next'
-import TemplateA from '@/templates/template-a/TemplateA'
-import TemplateB from '@/templates/template-b/TemplateB'
+import { getSiteData, resolveSchool, resolvePreviewMode, type RouteSearchParams } from '@/lib/cms'
+import { renderTemplate } from '@/lib/render-template'
+import { buildMetadata } from '@/lib/metadata'
 
 interface Props {
   params: Promise<{ id: string }>
@@ -14,27 +12,24 @@ interface Props {
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { id } = await params
   const headersList = await headers()
-  const subdomain = headersList.get('x-school-subdomain') ?? ''
-  const data = await getSchoolData(subdomain, resolvePreviewOptions(await searchParams))
-  const announcement = data?.updates.announcements.find((a) => a.id === id)
+  const sp = await searchParams
+  const data = await getSiteData(resolveSchool(headersList, sp), resolvePreviewMode(sp))
+  const announcement = data.updates.announcements.find((a) => a.id === id)
   return buildMetadata({
-    schoolName: data?.name,
+    schoolName: data.name,
     title: announcement?.title ?? 'Update',
-    description: announcement?.short_description,
+    description: announcement?.short_description ?? undefined,
   })
 }
 
 export default async function UpdateDetailPage({ params, searchParams }: Props) {
   await params
   const headersList = await headers()
-  const subdomain = headersList.get('x-school-subdomain') ?? ''
-  const data = await getSchoolData(subdomain, resolvePreviewOptions(await searchParams))
-  if (!data) return notFound()
-
-  // The update id is read via useParams() inside the client-side UpdatesView
-  if (data.config.template_id === 'template-a') return <TemplateA data={data} page="updates" />
-  if (data.config.template_id === 'template-b') return <TemplateB data={data} page="updates" />
-  return notFound()
+  const sp = await searchParams
+  const school = resolveSchool(headersList, sp)
+  const data = await getSiteData(school, resolvePreviewMode(sp))
+  // The update id is read via useParams() inside the client-side UpdatesView.
+  return renderTemplate(data, 'updates', school)
 }
 
 export const dynamic = 'force-dynamic'

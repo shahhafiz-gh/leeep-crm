@@ -19,20 +19,28 @@ export default function Footer({ data }: { data: SchoolData }) {
                   width={60}
                   height={60}
                   className="rounded-full"
+                  data-edit-img="logo"
                 />
               </Link>
-              {data.footer.description && (
-                <p className="text-tb-body text-sm leading-relaxed mb-6 max-w-xs">
-                  {data.footer.description}
+              {(data.footer.description || data.tagline) && (
+                <p data-edit="footer.description" className="text-tb-body text-sm leading-relaxed mb-6 max-w-xs">
+                  {data.footer.description || data.tagline}
                 </p>
               )}
-              {/* Social links */}
+              {/* Social links — all canonical platforms render; the inline-edit
+                  layer reveals empties for editing. In LIVE only platforms with
+                  a URL are visible (empties hidden via inline style). */}
               {data.socialLinks.length > 0 && (
                 <div className="flex items-center gap-3">
-                  {data.socialLinks.map((social) => (
+                  {data.socialLinks.map((social, si) => (
                     <a
                       key={social.platform}
-                      href={social.url}
+                      href={social.url || undefined}
+                      data-edit-social={`socialLinks.${si}.url`}
+                      data-social-platform={social.platform}
+                      data-social-url={social.url || ''}
+                      data-social-empty={social.url ? undefined : 'true'}
+                      style={social.url ? undefined : { display: 'none' }}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.platform}
@@ -46,19 +54,20 @@ export default function Footer({ data }: { data: SchoolData }) {
             </div>
 
             {/* Nav columns */}
-            {data.footer.columns.map((col) => (
+            {data.footer.columns.map((col, ci) => (
               <div key={col.title} className="lg:col-span-2">
-                <h6 className="font-semibold text-tb-heading mb-5 text-sm uppercase tracking-wider">
+                <h6 data-edit={`footer.columns.${ci}.title`} className="font-semibold text-tb-heading mb-5 text-sm uppercase tracking-wider">
                   {col.title}
                 </h6>
                 <ul className="flex flex-col gap-3">
-                  {col.links.map((link) => (
+                  {col.links.map((link, li) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}
+                        data-edit-link={`footer.columns.${ci}.links.${li}.href`}
                         className="text-sm text-tb-body hover:text-tb-primary transition-colors duration-300"
                       >
-                        {link.label}
+                        <span data-edit={`footer.columns.${ci}.links.${li}.label`}>{link.label}</span>
                       </Link>
                     </li>
                   ))}
@@ -93,7 +102,7 @@ export default function Footer({ data }: { data: SchoolData }) {
       {/* Copyright strip */}
       <div className="w-full bg-white border-t border-gray-200 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2">
-          <p className="text-xs text-tb-body">{data.footer.copyright}</p>
+          <p data-edit="footer.copyright" className="text-xs text-tb-body">{data.footer.copyright}</p>
           <p className="text-xs text-tb-body flex items-center gap-1.5">
             Powered by
             <a href="https://leeep.in" className="hover:opacity-80 transition-opacity">
